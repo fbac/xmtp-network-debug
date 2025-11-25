@@ -1,0 +1,14 @@
+x-xmtpd-contracts-image: &x-xmtpd-contracts-image ghcr.io/xmtp/contracts:sha-a8d7337
+x-mls-validation-service-image: &x-mls-validation-service-image ghcr.io/xmtp/mls-validation-service:main
+
+services:
+  chain:
+    image: *x-xmtpd-contracts-image
+    pull_policy: always
+    network_mode: host
+
+  validation:
+    image: *x-mls-validation-service-image
+    platform: linux/amd64
+    ports:
+      - 60051:50051
